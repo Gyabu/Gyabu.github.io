@@ -1,0 +1,242 @@
+/* responsive.css — mobile and tablet breakpoints */
+
+@media (max-width: 850px) {
+  .site-header {
+    padding: 14px 20px;
+  }
+
+  .menu-toggle {
+    display: grid;
+    gap: 4px;
+  }
+
+  .menu-toggle span {
+    width: 23px;
+    height: 2px;
+    background: currentColor;
+  }
+
+  .site-nav {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 68px;
+    display: none;
+    flex-direction: column;
+    align-items: stretch;
+    padding: 15px 20px 20px;
+    background: var(--color-bg);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  body.dark .site-nav {
+    background: var(--color-bg-dark);
+    border-color: var(--color-border-dark);
+  }
+
+  .site-nav.open {
+    display: flex;
+  }
+
+  .site-nav a,
+  .theme-toggle {
+    padding: 12px 0;
+  }
+
+  .hero {
+    min-height: auto;
+    grid-template-columns: 1fr;
+    gap: 48px;
+    padding-top: 80px;
+    padding-bottom: 60px;
+  }
+
+  .hero-visual {
+    order: -1;
+  }
+
+  .hero-copy {
+    text-align: center;
+  }
+
+  .hero-actions {
+    justify-content: center;
+  }
+
+  .hero-links {
+    justify-content: center;
+  }
+
+  .stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .stats div {
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  body.dark .stats div {
+    border-color: var(--color-border-dark);
+  }
+
+  .about-content {
+    grid-template-columns: 1fr;
+    gap: 45px;
+  }
+
+  .method-item {
+    grid-template-columns: 40px minmax(0, 1fr);
+    gap: 16px;
+  }
+
+  .project-heading {
+    align-items: start;
+    flex-direction: column;
+  }
+
+  .project-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .project-card.featured {
+    grid-column: span 1;
+    display: block;
+  }
+
+  .project-visual {
+    min-height: 220px;
+  }
+
+  .skill-groups {
+    grid-template-columns: 1fr;
+  }
+
+  .skill-group {
+    padding-right: 0;
+  }
+
+  .section {
+    padding: 85px 0;
+  }
+
+  .modal-body {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+}
+
+@media (max-width: 560px) {
+  .hero {
+    padding-top: 60px;
+    padding-bottom: 40px;
+    gap: 36px;
+  }
+
+  .hero h1 {
+    font-size: 44px;
+  }
+
+  .hero-photo {
+    border-radius: 6px;
+  }
+
+  .stats {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .stats div {
+    padding: 12px 10px;
+  }
+
+  .stats div:first-child {
+    padding-left: 0;
+  }
+
+  .stats strong {
+    font-size: 22px;
+  }
+
+  .about-lead p {
+    font-size: 20px;
+  }
+
+  .section-heading h2 {
+    font-size: 40px;
+  }
+
+  .project-body h3 {
+    font-size: 27px;
+  }
+
+  .timeline h3 {
+    font-size: 25px;
+  }
+
+  .coursework {
+    margin-left: 0;
+  }
+
+  .contact-card {
+    padding: 45px 25px;
+  }
+
+  .contact-card h2 {
+    font-size: 46px;
+  }
+
+  .site-footer {
+    flex-direction: column;
+  }
+
+  .method-item {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .method-item span {
+    font-size: 12px;
+  }
+
+  .method-content h3 {
+    font-size: 17px;
+  }
+
+  .modal-inner {
+    padding: 28px 20px;
+  }
+
+  .modal-header {
+    margin-bottom: 24px;
+    padding-bottom: 16px;
+  }
+
+  .modal-header h2 {
+    font-size: 28px;
+  }
+
+  .modal-body {
+    gap: 20px;
+  }
+
+  .modal-section-full {
+    margin-top: 24px;
+    padding-top: 16px;
+  }
+
+  .project-links {
+    flex-direction: column;
+  }
+
+  .project-links .button-link {
+    min-width: 100%;
+    justify-content: center;
+  }
+
+  .hero-links .button-link {
+    padding: 8px 14px;
+  }
+
+  .contact-links .button-link {
+    padding: 8px 14px;
+  }
+}

@@ -1,0 +1,269 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="J.R. Gabriel Portillo — Software Development student and aspiring full-stack developer.">
+  <title>Gabriel Portillo — Software Developer Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="scroll-progress" id="scrollProgress"></div>
+
+  <header class="site-header" id="siteHeader">
+    <a class="brand" href="#home" aria-label="Gabriel Portillo home">
+      <span class="brand-mark">GP</span>
+      <span>Gabriel Portillo</span>
+    </a>
+
+    <button class="menu-toggle" id="menuToggle" type="button" aria-expanded="false" aria-controls="siteNav" aria-label="Open navigation">
+      <span></span><span></span><span></span>
+    </button>
+
+    <nav class="site-nav" id="siteNav" aria-label="Primary navigation">
+      <a class="active" href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#education">Education</a>
+      <a href="#contact">Contact</a>
+      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle color theme">☼</button>
+    </nav>
+  </header>
+
+  <main id="home">
+    <section class="hero section">
+      <div class="hero-content reveal">
+        <div class="hero-copy">
+          <p class="eyebrow">SOFTWARE DEVELOPMENT • FULL-STACK • AI</p>
+          <h1>Building useful software,<br><span>one problem at a time.</span></h1>
+          <p class="hero-text">
+            I'm J.R. Gabriel Portillo, a BSIT Software Development student nearing graduation,
+            focused on full-stack web development, backend systems, AI integration, and DevOps.
+          </p>
+          <div class="hero-actions">
+            <a class="button primary" href="#projects">Explore my work <span>↗</span></a>
+            <a class="button secondary" href="#contact">Let's connect</a>
+          </div>
+          <div class="hero-links">
+            <a href="mailto:gabrielportillo0316@gmail.com">gabrielportillo0316@gmail.com</a>
+            <span>•</span>
+            <a class="button-link" href="https://github.com/Gyabu" target="_blank" rel="noreferrer">GitHub ↗</a>
+            <span>•</span>
+            <a class="button-link" href="https://www.linkedin.com/in/gabriel-portillo-2b6ab9298" target="_blank" rel="noreferrer">LinkedIn ↗</a>
+          </div>
+        </div>
+        <div class="hero-visual" aria-label="Profile photo">
+          <img class="hero-photo" src="assets/images/profilepic_portfolio.png" alt="J.R. Gabriel Portillo" loading="lazy">
+        </div>
+      </div>
+    </section>
+
+    <section class="stats section reveal" aria-label="Portfolio highlights">
+      <div><strong>3</strong><span>Featured projects</span></div>
+      <div><strong>50%+</strong><span>NervLess frontend contribution</span></div>
+      <div><strong>149/161</strong><span>Credits completed</span></div>
+      <div><strong>BSIT</strong><span>Software Development</span></div>
+    </section>
+
+    <section class="section about-section" id="about">
+      <div class="section-heading reveal">
+        <p class="eyebrow">01 — ABOUT</p>
+        <h2>Curious about how<br>systems come together.</h2>
+      </div>
+      <div class="about-content">
+        <div class="about-lead reveal">
+          <p>
+            I enjoy turning requirements into working interfaces and connecting those interfaces
+            to reliable backend systems. My project experience spans web development, APIs,
+            databases, automated testing, CI/CD, monitoring, and AI-powered applications.
+          </p>
+        </div>
+        <div class="about-points reveal delay-1">
+          <article class="method-item"><span>01</span><div class="method-content"><h3>Problem first</h3><p>I focus on understanding the user and system problem before jumping into implementation.</p></div></article>
+          <article class="method-item"><span>02</span><div class="method-content"><h3>Build & connect</h3><p>I work across frontend, backend, databases, APIs, and deployment workflows.</p></div></article>
+          <article class="method-item"><span>03</span><div class="method-content"><h3>Keep learning</h3><p>Every project is an opportunity to strengthen both technical and practical development skills.</p></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section skills-section" id="skills">
+      <div class="section-heading reveal">
+        <p class="eyebrow">02 — TOOLKIT</p>
+        <h2>Technologies I work with.</h2>
+      </div>
+      <div class="skill-groups reveal">
+        <div class="skill-group">
+          <h3>Languages</h3>
+          <div class="tags"><span>JavaScript</span><span>Python</span><span>Java</span><span>SQL</span></div>
+        </div>
+        <div class="skill-group">
+          <h3>Frontend</h3>
+          <div class="tags"><span>React</span><span>Next.js</span><span>HTML5</span><span>CSS3</span></div>
+        </div>
+        <div class="skill-group">
+          <h3>Backend</h3>
+          <div class="tags"><span>Node.js</span><span>Express.js</span><span>REST APIs</span><span>Webhooks</span></div>
+        </div>
+        <div class="skill-group">
+          <h3>Databases</h3>
+          <div class="tags"><span>MongoDB</span><span>MongoDB Atlas</span><span>PostgreSQL</span><span>Supabase</span><span>MySQL</span></div>
+        </div>
+        <div class="skill-group">
+          <h3>Testing</h3>
+          <div class="tags"><span>Jest</span><span>Supertest</span><span>MongoMemoryServer</span></div>
+        </div>
+        <div class="skill-group">
+          <h3>Tools & DevOps</h3>
+          <div class="tags"><span>Git</span><span>GitHub Actions</span><span>Docker</span><span>Docker Compose</span><span>Nginx</span><span>Prometheus</span><span>Grafana</span><span>Android Studio</span><span>Gradle</span><span>Tableau</span><span>Chart.js</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section projects-section" id="projects">
+      <div class="section-heading project-heading reveal">
+        <div>
+          <p class="eyebrow">03 — SELECTED WORK</p>
+          <h2>Projects that show how I build.</h2>
+        </div>
+        <div class="filters" role="group" aria-label="Filter projects">
+          <button class="filter active" type="button" data-filter="all">All</button>
+          <button class="filter" type="button" data-filter="ai">AI</button>
+          <button class="filter" type="button" data-filter="web">Web</button>
+          <button class="filter" type="button" data-filter="devops">DevOps</button>
+        </div>
+      </div>
+
+      <div class="project-grid">
+        <article class="project-card featured reveal" data-category="ai web" data-project="nervless">
+          <div class="project-visual visual-nervless"><img src="assets/images/nervless.png" alt="NervLess project preview" loading="lazy"></div>
+          <div class="project-body">
+            <div class="project-top"><span class="project-type">CAPSTONE • 01</span><span>AI / WEB</span></div>
+            <h3>NervLess</h3>
+            <p>AI-powered mock thesis-defense simulator designed to help students practice defending their research through interactive sessions.</p>
+            <div class="project-stack"><span>Next.js</span><span>Supabase</span><span>pgvector</span><span>Gemini</span></div>
+            <button class="text-button open-project" type="button">View project details <span>→</span></button>
+          </div>
+        </article>
+
+        <article class="project-card reveal delay-1" data-category="ai devops web" data-project="brainbytes">
+          <div class="project-visual visual-brain"><img src="assets/images/brainbytes.png" alt="BrainBytes AI Tutor project preview" loading="lazy"></div>
+          <div class="project-body">
+            <div class="project-top"><span class="project-type">ASSESSMENT • 02</span><span>DEVOPS</span></div>
+            <h3>BrainBytes AI Tutor</h3>
+            <p>AI tutoring platform project with REST services, automated testing, CI/CD hardening, and production-style monitoring.</p>
+            <div class="project-stack"><span>Node.js</span><span>MongoDB</span><span>Docker</span><span>GitHub Actions</span></div>
+            <button class="text-button open-project" type="button">View project details <span>→</span></button>
+          </div>
+        </article>
+
+        <article class="project-card reveal delay-2" data-category="web" data-project="cafefind">
+          <div class="project-visual visual-cafe"><img src="assets/images/cafefind.png" alt="CaféFind project preview" loading="lazy"></div>
+          <div class="project-body">
+            <div class="project-top"><span class="project-type">WEB SYSTEMS • 03</span><span>FULL-STACK</span></div>
+            <h3>CaféFind</h3>
+            <p>Responsive café discovery application with search, filtering, favorites, profiles, API communication, and data persistence.</p>
+            <div class="project-stack"><span>HTML5</span><span>CSS3</span><span>JavaScript</span><span>Express.js</span></div>
+            <button class="text-button open-project" type="button">View project details <span>→</span></button>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section experience-section" id="education">
+      <div class="section-heading reveal">
+        <p class="eyebrow">04 — EDUCATION</p>
+        <h2>Building the foundation.</h2>
+      </div>
+      <div class="timeline reveal">
+        <div class="timeline-item">
+          <div class="timeline-marker"></div>
+          <div><span class="timeline-label">CURRENT • NEARING GRADUATION</span><h3>Bachelor of Science in Information Technology</h3><p class="institution">Mapúa Malayan Colleges Laguna (MCL)</p><p>Software Development track. Completed 149 of 161 required credits.</p></div>
+        </div>
+        <div class="coursework">
+          <span>Relevant coursework</span>
+          <div class="course-tags"><b>Data Visualization Techniques</b><b>Object-Oriented System Analysis & Design</b><b>System Administration & Maintenance</b><b>Web Systems & Technology</b><b>Mobile Development</b><b>DevOps</b><b>Platform Technologies</b></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section contact-section" id="contact">
+      <div class="contact-card reveal">
+        <p class="eyebrow">05 — CONTACT</p>
+        <h2>Let's build something<br><span>useful together.</span></h2>
+        <p>I'm currently seeking an IT internship where I can apply and further develop my software development skills.</p>
+<div class="contact-actions">
+          <a class="button primary" href="mailto:gabrielportillo0316@gmail.com">Email me <span>↗</span></a>
+          <a class="button secondary" href="assets/documents/Gab_Portillo_Resume.pdf" download>Download Resume (PDF) <span>↗</span></a>
+          <button class="button secondary" id="copyEmail" type="button">Copy email</button>
+        </div>
+        <div class="contact-links">
+          <a class="button-link" href="https://github.com/Gyabu" target="_blank" rel="noreferrer">GitHub ↗</a>
+          <a class="button-link" href="https://www.linkedin.com/in/gabriel-portillo-2b6ab9298" target="_blank" rel="noreferrer">LinkedIn ↗</a>
+          <span>Las Piñas, Metro Manila, Philippines</span>
+        </div>
+        <p class="copy-status" id="copyStatus" aria-live="polite"></p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <span>© <span id="year"></span> J.R. Gabriel Portillo</span>
+    <span>Designed as a developer portfolio.</span>
+    <a href="#home">Back to top ↑</a>
+  </footer>
+
+  <button class="back-top" id="backTop" type="button" aria-label="Back to top">↑</button>
+
+  <dialog class="project-modal" id="projectModal" aria-labelledby="modalTitle">
+    <div class="modal-inner">
+      <button class="modal-close" id="modalClose" type="button" aria-label="Close project details">×</button>
+
+      <div class="modal-image" id="modalImage"></div>
+
+      <div class="modal-header">
+        <p class="eyebrow" id="modalEyebrow"></p>
+        <h2 id="modalTitle"></h2>
+        <p id="modalDescription"></p>
+      </div>
+
+      <div class="modal-body">
+        <div class="modal-column">
+          <div class="modal-section">
+            <h3>Project Overview</h3>
+            <p id="modalOverview"></p>
+          </div>
+        </div>
+
+        <div class="modal-column">
+          <div class="modal-section">
+            <h3>My Contribution</h3>
+            <ul id="modalWork"></ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-section modal-section-full">
+        <h3>Technology</h3>
+        <div class="tags" id="modalTags"></div>
+      </div>
+
+      <div class="modal-section modal-section-full modal-links">
+        <h3>Project Links</h3>
+        <div class="project-links" id="modalLinks"></div>
+      </div>
+    </div>
+  </dialog>
+
+  <!-- JavaScript modules - load in order: navigation first (defines $ helpers), then others, main last -->
+  <script src="js/navigation.js"></script>
+  <script src="js/theme.js"></script>
+  <script src="js/animations.js"></script>
+  <script src="js/projects.js"></script>
+  <script src="js/interactions.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
