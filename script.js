@@ -85,7 +85,7 @@ const Utils = {
     readStore(key) {
         try {
             return window.localStorage.getItem(key);
-        } catch (error) {
+        } catch {
             return null;
         }
     },
@@ -114,7 +114,7 @@ const Config = {
     INTRO_KEY: 'jr-portfolio:intro-seen',
     THEME_COLORS: { dark: '#0a0d12', light: '#f5f7f9' },
     SECTION_IDS: ['home', 'about', 'skills', 'projects', 'education', 'contact'],
-    ROLES: ['Full-Stack Developer', 'DevOps Enthusiast', 'AI Integrator'],
+    ROLES: ['Full-Stack Developer', 'DevOps', 'AI Integrator'],
     EMAIL_PATTERN: /^[^\s@]+@[^\s@]+\.[a-z]{2,}$/i
 };
 
@@ -167,7 +167,7 @@ class ToastManager {
 class ThemeManager {
     constructor() {
         this.root = document.documentElement;
-        this.toggle = document.getElementById('theme-toggle');
+        this.toggleButton = document.getElementById('theme-toggle');
         this.metaThemeColor = document.getElementById('meta-theme-color');
         this.systemQuery = window.matchMedia('(prefers-color-scheme: light)');
         this.handleSystemChange = (event) => {
@@ -182,8 +182,8 @@ class ThemeManager {
     init() {
         this.apply(this.current(), false);
 
-        if (this.toggle) {
-            this.toggle.addEventListener('click', () => this.toggle());
+        if (this.toggleButton) {
+            this.toggleButton.addEventListener('click', () => this.toggle());
         }
 
         if (this.systemQuery.addEventListener) {
@@ -205,12 +205,10 @@ class ThemeManager {
             this.metaThemeColor.setAttribute('content', Config.THEME_COLORS[next]);
         }
 
-        if (this.toggle) {
-            this.toggle.setAttribute('aria-pressed', next === 'light' ? 'true' : 'false');
-            this.toggle.setAttribute('aria-label', next === 'light' ? 'Switch to dark theme' : 'Switch to light theme');
+        if (this.toggleButton) {
+            this.toggleButton.setAttribute('aria-pressed', next === 'light' ? 'true' : 'false');
+            this.toggleButton.setAttribute('aria-label', next === 'light' ? 'Switch to dark theme' : 'Switch to light theme');
         }
-
-        this.updateGitHubCards(next);
 
         if (persist) {
             Utils.writeStore(Config.THEME_KEY, next);
@@ -223,16 +221,6 @@ class ThemeManager {
         return this.apply(this.current() === 'light' ? 'dark' : 'light', true);
     }
 
-    /* The stats cards ship with light and dark colour variants so they stay
-       readable in both themes. The images themselves come from the service. */
-    updateGitHubCards(theme) {
-        Utils.qsa('[data-gh-card] img').forEach((img) => {
-            const nextSrc = img.getAttribute(theme === 'light' ? 'data-src-light' : 'data-src-dark');
-            if (nextSrc && img.getAttribute('src') !== nextSrc) {
-                img.setAttribute('src', nextSrc);
-            }
-        });
-    }
 }
 
 /* ==========================================================================
@@ -1041,14 +1029,14 @@ class ClipboardManager {
 
 /* ==========================================================================
    11. CONTACT FORM
-   Owns only form validation. There is no backend: submit is intercepted,
-   fields are validated with per-field messages, and success states clearly
-   that nothing was sent.
+   Validates the contact fields and submits the message to the contact API.
    ========================================================================== */
 class ContactForm {
     constructor() {
         this.form = document.getElementById('contact-form');
         this.status = document.getElementById('contact-status');
+        this.submitButton = this.form && this.form.querySelector('button[type="submit"]');
+        this.submitLabel = this.submitButton ? this.submitButton.textContent : '';
         this.fields = [];
         this.handleSubmit = (event) => this.onSubmit(event);
     }
@@ -1128,8 +1116,12 @@ class ContactForm {
         return message === '';
     }
 
-    onSubmit(event) {
+    async onSubmit(event) {
         event.preventDefault();
+
+        if (this.submitButton && this.submitButton.disabled) {
+            return;
+        }
 
         let firstInvalid = null;
 
@@ -1149,14 +1141,59 @@ class ContactForm {
         }
 
         if (this.status) {
-            this.status.className = 'field__status is-success';
-            this.status.textContent =
-                'Thanks! Your message form is ready to connect once a backend is configured. ' +
-                'Nothing was sent yet - please use email or LinkedIn if you would like a reply.';
+            this.status.className = 'field__status';
+            this.status.textContent = 'Sending...';
         }
 
-        this.form.reset();
-        this.fields.forEach((field) => this.setFieldMessage(field, ''));
+        if (this.submitButton) {
+            this.submitButton.disabled = true;
+            this.submitButton.textContent = 'Sending...';
+        }
+
+        try {
+            const response = await fetch('/api/contact', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    name: this.form.elements.namedItem('name').value,
+                    email: this.form.elements.namedItem('email').value,
+                    message: this.form.elements.namedItem('message').value,
+                    website: this.form.elements.namedItem('website').value
+                })
+            });
+
+            if (!response.ok) {
+                if (this.status) {
+                    this.status.className = 'field__status is-error';
+                    if (response.status === 404) {
+                        this.status.textContent = 'Contact API not available here. It only works on the deployed site.';
+                    } else {
+                        const result = await response.json().catch(() => ({}));
+                        this.status.textContent = result.error
+                            ? 'Could not send: ' + result.error
+                            : 'Could not send (HTTP ' + response.status + '). Please email me directly.';
+                    }
+                }
+                return;
+            }
+
+            this.form.reset();
+            this.fields.forEach((field) => this.setFieldMessage(field, ''));
+            if (this.status) {
+                this.status.className = 'field__status is-success';
+                this.status.textContent = 'Thanks! Your message was sent.';
+            }
+        } catch (error) {
+            if (this.status) {
+                this.status.className = 'field__status is-error';
+                this.status.textContent = 'Could not send. Please email me directly.';
+            }
+        } finally {
+            if (this.submitButton) {
+                this.submitButton.disabled = false;
+                this.submitButton.textContent = this.submitLabel;
+            }
+        }
     }
 }
 
@@ -1193,15 +1230,6 @@ class ProjectInteractions {
             return;
         }
 
-        const card = img.closest('[data-gh-card]');
-
-        if (card) {
-            card.classList.add('is-missing');
-            const fallback = Utils.qs('.gh-card__fallback', card);
-            if (fallback) {
-                fallback.hidden = false;
-            }
-        }
     }
 
     initImageFallbacks() {

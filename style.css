@@ -612,12 +612,6 @@ main {
   font-size: 0.95rem;
 }
 
-.brand__role {
-  font-size: 0.66rem;
-  letter-spacing: 0.05em;
-  color: var(--text-faint);
-}
-
 .nav {
   margin-left: auto;
 }
@@ -1151,11 +1145,6 @@ html[data-intro="play"] .intro {
   aspect-ratio: 1;
 }
 
-.photo-frame--about {
-  width: min(100%, 270px);
-  aspect-ratio: 1;
-}
-
 .hero__aside-note {
   display: flex;
   align-items: center;
@@ -1168,14 +1157,16 @@ html[data-intro="play"] .intro {
    ========================================================================== */
 .about {
   display: grid;
-  grid-template-columns: minmax(0, 1.3fr) minmax(0, 0.8fr);
+  grid-template-columns: minmax(0, 1fr);
   align-items: start;
   gap: clamp(1.75rem, 4vw, 3rem);
 }
 
 .about__body {
   display: grid;
-  gap: clamp(1.5rem, 3vw, 2rem);
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+  gap: clamp(1.75rem, 4vw, 3rem);
+  align-items: start;
   min-width: 0;
 }
 
@@ -1221,40 +1212,6 @@ html[data-intro="play"] .intro {
   height: 5px;
   border-radius: 50%;
   background: var(--accent);
-}
-
-.about__aside {
-  display: grid;
-  gap: 1.15rem;
-  min-width: 0;
-  justify-items: start;
-}
-
-.code-card {
-  width: 100%;
-  border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
-  background: var(--surface);
-  overflow: hidden;
-}
-
-.code-card__bar {
-  margin: 0;
-  padding: 0.6rem 0.9rem;
-  border-bottom: 1px solid var(--border);
-  background: var(--surface-2);
-  font-size: 0.7rem;
-  color: var(--text-faint);
-}
-
-.code-card__body {
-  margin: 0;
-  padding: 1rem;
-  overflow-x: auto;
-  font-size: 0.72rem;
-  line-height: 1.75;
-  color: var(--text-muted);
-  white-space: pre;
 }
 
 /* ==========================================================================
@@ -1303,74 +1260,8 @@ html[data-intro="play"] .intro {
 /* ==========================================================================
    11. GITHUB ACTIVITY
    ========================================================================== */
-.gh-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 330px), 1fr));
-  gap: 1.25rem;
-  margin-bottom: 1.75rem;
-}
-
-.gh-card {
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-  margin: 0;
-  padding: 1.15rem;
-  border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
-  background: var(--surface);
-  transition: border-color var(--speed) var(--ease), box-shadow var(--speed) var(--ease);
-}
-
-.gh-card:hover {
-  border-color: var(--border-strong);
-  box-shadow: var(--shadow-md);
-}
-
-.gh-card__img {
-  width: 100%;
-  height: auto;
-}
-
-.gh-card.is-missing .gh-card__img {
-  display: none;
-}
-
-.gh-card__fallback {
-  display: grid;
-  gap: 0.5rem;
-  align-content: center;
-  min-height: 170px;
-  padding: 1rem;
-  border: 1px dashed var(--border-strong);
-  border-radius: var(--radius);
-  text-align: center;
-  color: var(--text-muted);
-}
-
-.gh-card__fallback p {
-  margin: 0;
-  font-size: 0.82rem;
-}
-
-.gh-card__fallback .mono {
-  font-size: 0.7rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--text-faint);
-}
-
-.gh-card__caption {
-  font-size: 0.68rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--text-faint);
-  order: -1;
-}
-
 /* Author display rules override the UA [hidden] style, so re-assert it for
    state elements that script.js toggles with the hidden property. */
-.gh-card__fallback[hidden],
 .field__error[hidden],
 .palette__empty[hidden],
 .palette[hidden],
@@ -1378,27 +1269,14 @@ html[data-intro="play"] .intro {
   display: none;
 }
 
-.gh-cta {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 1rem;
-}
-
-.gh-cta__note {
-  margin: 0;
-  font-size: 0.72rem;
-  color: var(--text-faint);
-}
 /* ==========================================================================
    12. PROJECTS
-   The featured project spans a two-column layout; the other two share a grid.
+   All three project cards share one responsive grid.
    ========================================================================== */
 .projects__grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 380px), 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 1.5rem;
-  margin-bottom: 1.5rem;
 }
 
 .project {
@@ -1419,33 +1297,19 @@ html[data-intro="play"] .intro {
   box-shadow: var(--shadow-md);
 }
 
-.project--featured {
-  display: grid;
-  grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
-  margin-bottom: 1.5rem;
-}
-
 .media--shot {
   aspect-ratio: 16 / 9;
   border-bottom: 1px solid var(--border);
 }
 
 /* Project screenshots are wide browser captures (about 2:1) while the frames
-   are either 16:9 cards or a full-height featured panel. "cover" would slice
-   half of a screenshot away and cut headings mid-word, so the shot is
+   are 16:9 cards. "cover" would slice half of a screenshot away and cut
+   headings mid-word, so the shot is
    contained instead and the dark .media background reads as a letterbox.
    Profile photos are unaffected: they are square sources in square frames. */
 .project__media .media__img {
   object-fit: contain;
   object-position: center;
-}
-
-.project--featured .project__media {
-  aspect-ratio: auto;
-  height: 100%;
-  min-height: 300px;
-  border-bottom: 0;
-  border-right: 1px solid var(--border);
 }
 
 .project:hover .media__img {
@@ -1463,6 +1327,7 @@ html[data-intro="play"] .intro {
 .project__body {
   display: flex;
   flex-direction: column;
+  flex: 1;
   padding: clamp(1.25rem, 3vw, 2rem);
 }
 
@@ -2185,7 +2050,6 @@ html.has-custom-cursor .cursor {
 
 .js .skills > .reveal:nth-child(2),
 .js .projects__grid > .reveal:nth-child(2),
-.js .gh-grid > .reveal:nth-child(2),
 .js .timeline > .reveal:nth-child(2) {
   transition-delay: 70ms;
 }
@@ -2225,6 +2089,10 @@ html.has-custom-cursor .cursor {
     display: none;
   }
 
+  .site-header__actions {
+    margin-left: auto;
+  }
+
   .nav-toggle {
     display: grid;
   }
@@ -2232,6 +2100,20 @@ html.has-custom-cursor .cursor {
   .palette-trigger__label,
   .palette-trigger .kbd {
     display: none;
+  }
+
+  .projects__grid {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 1rem;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 1rem;
+  }
+
+  .projects__grid > .project {
+    flex: 0 0 min(85%, 380px);
+    scroll-snap-align: start;
   }
 }
 
@@ -2242,28 +2124,16 @@ html.has-custom-cursor .cursor {
   }
 
   .hero__aside {
-    justify-items: start;
+    order: -1;
+    justify-items: center;
   }
 
   .photo-frame--hero {
     width: min(200px, 55vw);
   }
 
-  .about {
+  .about__body {
     grid-template-columns: minmax(0, 1fr);
-  }
-
-  .project--featured {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .project--featured .project__media {
-    height: auto;
-    min-height: 0;
-    aspect-ratio: 16 / 9;
-    border-right: 0;
-    border-bottom: 1px solid var(--border);
   }
 
   .contact {
@@ -2281,10 +2151,6 @@ html.has-custom-cursor .cursor {
 
 /* Phones */
 @media (max-width: 640px) {
-  .brand__role {
-    display: none;
-  }
-
   .hero__facts {
     gap: 0.85rem;
   }
@@ -2357,6 +2223,17 @@ html.has-custom-cursor .cursor {
   }
 }
 
+@media (min-width: 901px) {
+  .about { grid-template-columns: minmax(0, 1fr); }
+  .about__body {
+    display: grid;
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+    gap: clamp(1.75rem, 4vw, 3rem);
+    align-items: start;
+  }
+  .about__body .focus { width: 100%; max-width: none; }
+}
+
 /* Visitors who prefer less motion get a static, instantly readable page */
 @media (prefers-reduced-motion: reduce) {
   html {
@@ -2398,4 +2275,3 @@ html.has-custom-cursor .cursor {
     display: none !important;
   }
 }
-
